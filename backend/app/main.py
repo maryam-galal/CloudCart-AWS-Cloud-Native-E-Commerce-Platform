@@ -8,6 +8,7 @@ from .auth import get_current_user
 from .models import User
 from .routes_auth import router as auth_router
 from .schemas import ProtectedResponse
+from .routes_products import router as products_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -18,6 +19,7 @@ app = FastAPI(
 )
 
 app.include_router(auth_router)
+app.include_router(products_router)
 
 
 @app.get("/health")
