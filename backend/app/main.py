@@ -10,6 +10,7 @@ from .routes_auth import router as auth_router
 from .schemas import ProtectedResponse
 from .routes_products import router as products_router
 from .routes_cart import router as cart_router
+from .routes_orders import router as orders_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,6 +23,7 @@ app = FastAPI(
 app.include_router(auth_router)
 app.include_router(products_router)
 app.include_router(cart_router)
+app.include_router(orders_router)
 
 
 @app.get("/health")

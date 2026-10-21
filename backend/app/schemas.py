@@ -74,3 +74,23 @@ class CartItemResponse(BaseModel):
 class CartResponse(BaseModel):
     items: list[CartItemResponse]
     total: float
+
+
+class OrderItemResponse(BaseModel):
+    id: int
+    product_id: int
+    product_name: str
+    quantity: int
+    unit_price: float
+    subtotal: float
+
+
+class OrderResponse(BaseModel):
+    id: int
+    total_amount: float
+    status: str
+    items: list[OrderItemResponse]
+
+
+class OrderListResponse(BaseModel):
+    orders: list[OrderResponse]
