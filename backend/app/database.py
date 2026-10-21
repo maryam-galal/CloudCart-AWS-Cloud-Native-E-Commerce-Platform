@@ -1,13 +1,15 @@
+﻿import os
 
-import os
-
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "mysql+mysqlconnector://root:1234@localhost:3306/cloudcart",
-)
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL environment variable is not set")
 
 engine_options = {"echo": False}
 
