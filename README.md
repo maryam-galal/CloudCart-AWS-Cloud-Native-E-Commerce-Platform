@@ -339,6 +339,6 @@ AWS resources such as Application Load Balancers, NAT Gateways, EC2 instances, a
 
 This project is licensed under the MIT License.
 
-You are welcome to fork, use, and modify this project. If you reuse or build upon it, please give credit to the original project and its contributors.
+You are welcome to fork, use, and modify this project. If you reuse or build upon it, please give credit to the original project and **Maryam Galal**.
 
 Original repository: [CloudCart](https://github.com/maryam-galal/CloudCart-AWS-Cloud-Native-E-Commerce-Platform)
