@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import AdminPanel from './AdminPanel.jsx'
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = import.meta.env.VITE_API_URL ?? ''
 
 export default function AuthPanel() {
   const [mode, setMode] = useState('signin')
@@ -133,7 +133,7 @@ export default function AuthPanel() {
   if (token && user) {
     return (
       <div className="auth-card">
-        <div className="auth-success-icon">✓</div>
+        <div className="auth-success-icon">OK</div>
         <div className="eyebrow auth-eyebrow">YOUR CLOUDCART ACCOUNT</div>
         <h3>Welcome, {user.name}!</h3>
         <p className="auth-description">
@@ -251,8 +251,8 @@ export default function AuthPanel() {
           {loading
             ? 'Please wait...'
             : mode === 'signin'
-              ? 'Sign in ↗'
-              : 'Create account ↗'}
+              ? 'Sign in ->'
+              : 'Create account ->'}
         </button>
       </form>
 

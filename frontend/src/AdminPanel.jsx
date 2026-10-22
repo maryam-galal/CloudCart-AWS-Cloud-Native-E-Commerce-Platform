@@ -1,7 +1,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = import.meta.env.VITE_API_URL ?? ''
 
 const emptyForm = {
   name: '',
@@ -268,8 +268,8 @@ export default function AdminPanel({ token }) {
             {saving
               ? 'Saving...'
               : editingId !== null
-                ? 'Save changes ↗'
-                : 'Create product ↗'}
+                ? 'Save changes ->'
+                : 'Create product ->'}
           </button>
         </form>
       </div>
@@ -283,7 +283,7 @@ export default function AdminPanel({ token }) {
             disabled={loading}
             type="button"
           >
-            ↻ Refresh
+            Refresh Refresh
           </button>
         </div>
 
@@ -310,7 +310,7 @@ export default function AdminPanel({ token }) {
                         {product.image_url ? (
                           <img src={product.image_url} alt="" />
                         ) : (
-                          <span className="admin-no-image">✦</span>
+                          <span className="admin-no-image">*</span>
                         )}
                         <span>{product.name}</span>
                       </div>

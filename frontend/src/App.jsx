@@ -3,14 +3,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import './App.css'
 import AuthPanel from './AuthPanel.jsx'
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = import.meta.env.VITE_API_URL ?? ''
 
 const categories = [
-  { name: 'All Products', icon: '✦' },
-  { name: 'Electronics', icon: '⌁' },
-  { name: 'Fashion', icon: '◇' },
-  { name: 'Accessories', icon: '◈' },
-  { name: 'Lifestyle', icon: '☕' },
+  { name: 'All Products', icon: '\u2726' },
+  { name: 'Electronics', icon: '\u2301' },
+  { name: 'Fashion', icon: '\u25C7' },
+  { name: 'Accessories', icon: '\u25C8' },
+  { name: 'Lifestyle', icon: '\u2615' },
 ]
 
 function getCategory(product) {
@@ -276,7 +276,7 @@ function App() {
     <div className="store">
       <div className="announcement">
         YOUR EVERYDAY FINDS, ALL IN ONE PLACE
-        <span> ✦ </span>
+        <span>{'\u2726'}</span>
         WELCOME TO CLOUDCART
       </div>
 
@@ -317,16 +317,16 @@ function App() {
             </h1>
 
             <p className="hero-description">
-              Discover everyday essentials and things you didn’t know you
+              Discover everyday essentials and things you didn't know you
               needed. Thoughtfully picked, ready for you.
             </p>
 
             <a className="primary-button" href="#shop">
-              Explore the collection <span>↗</span>
+              Explore the collection <span>{"->"}</span>
             </a>
 
             <div className="hero-proof">
-              <span className="proof-stars">★★★★★</span>
+              <span className="proof-stars">{'\u2605\u2605\u2605\u2605\u2605'}</span>
               <span>Little finds, big smiles.</span>
             </div>
           </div>
@@ -338,14 +338,14 @@ function App() {
               <span>GOOD</span>
               <span>THINGS</span>
               <span>INSIDE.</span>
-              <div className="art-sun">✳</div>
+              <div className="art-sun">{'\u2733'}</div>
             </div>
             <div className="art-card art-card-front">
               <div className="art-bag-handle" />
               <div className="art-bag-logo">c.</div>
               <div className="art-bag-caption">A BAG FULL OF GOOD</div>
             </div>
-            <div className="art-sticker">MADE FOR<br />YOUR EVERYDAY ✦</div>
+            <div className="art-sticker">MADE FOR<br />YOUR EVERYDAY {'\u2726'}</div>
             <div className="art-label label-bottom">FIND YOUR NEXT FAVOURITE</div>
           </div>
         </section>
@@ -383,7 +383,7 @@ function App() {
             </div>
 
             <label className="search-box">
-              <span>⌕</span>
+              <span>{'\u2315'}</span>
               <input
                 type="search"
                 placeholder="Search products..."
@@ -398,7 +398,7 @@ function App() {
             <div className="notice" role="status">
               {notice}
               <button onClick={() => setNotice('')} aria-label="Dismiss message">
-                ×
+                {'\u00D7'}
               </button>
             </div>
           )}
@@ -409,7 +409,7 @@ function App() {
 
           {!loading && error && (
             <div className="state-message error-state">
-              <h3>We couldn’t load the collection.</h3>
+              <h3>We couldn't load the collection.</h3>
               <p>{error}</p>
               <button onClick={() => window.location.reload()}>
                 Try again
@@ -448,7 +448,7 @@ function App() {
                           }}
                         />
                       ) : (
-                        <span className="image-placeholder">✦</span>
+                        <span className="image-placeholder">{'\u2726'}</span>
                       )}
 
                       <button
@@ -510,14 +510,14 @@ function App() {
                 onClick={() => setNotice('')}
                 aria-label="Dismiss message"
               >
-                ×
+                {'\u00D7'}
               </button>
             </div>
           )}
 
           {!token ? (
             <div className="empty-cart">
-              <span className="empty-cart-icon">♡</span>
+              <span className="empty-cart-icon">{'\u2661'}</span>
               <h3>Sign in to access your saved bag.</h3>
               <p>Your shopping cart will be saved to your account.</p>
               <button
@@ -528,16 +528,16 @@ function App() {
                   })
                 }
               >
-                Sign in to continue ↗
+                Sign in to continue {'\u2197'}
               </button>
             </div>
           ) : cart.length === 0 ? (
             <div className="empty-cart">
-              <span className="empty-cart-icon">♡</span>
+              <span className="empty-cart-icon">{'\u2661'}</span>
               <h3>Your bag is waiting for something good.</h3>
               <p>Explore the collection and add your favourites.</p>
               <a className="primary-button" href="#shop">
-                Explore products ↗
+                Explore products {'\u2197'}
               </a>
             </div>
           ) : (
@@ -563,7 +563,7 @@ function App() {
                       }
                       aria-label={`Remove one ${item.name}`}
                     >
-                      −
+                      {'\u2212'}
                     </button>
                     <span>{item.quantity}</span>
                     <button
@@ -611,7 +611,7 @@ function App() {
               >
                 {checkoutLoading
                   ? 'Processing order...'
-                  : 'Place Order ↗'}
+                  : 'Place Order ->'}
               </button>
             </div>
           )}
@@ -643,7 +643,7 @@ function App() {
               <h3>No orders yet.</h3>
               <p>Your completed checkouts will appear here.</p>
               <a className="primary-button" href="#shop">
-                Start shopping ↗
+                Start shopping {'\u2197'}
               </a>
             </div>
           ) : (
@@ -667,7 +667,7 @@ function App() {
                         key={item.id}
                       >
                         <span>
-                          {item.product_name} × {item.quantity}
+                          {item.product_name} x {item.quantity}
                         </span>
                         <strong>
                           ${Number(item.subtotal).toFixed(2)}
@@ -697,9 +697,9 @@ function App() {
 
 
         <section className="about-strip" id="about">
-          <span>✳ THOUGHTFUL FINDS</span>
-          <span>✳ EVERYDAY ESSENTIALS</span>
-          <span>✳ A LITTLE JOY IN EVERY ORDER</span>
+          <span>{'\u2733'} THOUGHTFUL FINDS</span>
+          <span>{'\u2733'} EVERYDAY ESSENTIALS</span>
+          <span>{'\u2733'} A LITTLE JOY IN EVERY ORDER</span>
         </section>
       </main>
 
@@ -709,7 +709,7 @@ function App() {
           cloud<span>cart</span><span className="brand-dot">.</span>
         </a>
         <p>Good things, delivered.</p>
-        <span>© 2026 CloudCart</span>
+        <span>{'\u00A9'} 2026 CloudCart</span>
       </footer>
     </div>
   )
